@@ -3,151 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Glosario Completo SIATEP / SISESAT</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f5f7fa;
-            color: #333;
-        }
-        h1 {
-            color: #003366;
-            border-bottom: 3px solid #003366;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #005599;
-            margin-top: 30px;
-        }
-        .indice {
-            background: #ffffff;
-            padding: 15px 20px;
-            border-radius: 8px;
-            margin: 20px 0 30px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .indice h2 {
-            margin-top: 0;
-        }
-        .indice ul {
-            margin: 0;
-            padding-left: 20px;
-        }
-        .indice li {
-            margin: 8px 0;
-        }
-        .indice a {
-            color: #005599;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .indice a:hover {
-            text-decoration: underline;
-        }
-        .card {
-            background: #ffffff;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .term {
-            font-weight: bold;
-            font-size: 16px;
-            color: #002244;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: #ffffff;
-            margin-top: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        th {
-            background-color: #003366;
-            color: white;
-            padding: 10px;
-            text-align: left;
-        }
-        td {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-        .sql-terminal {
-            background: #0b1220;
-            border: 1px solid #1f2a44;
-            border-radius: 8px;
-            margin: 24px 0 10px;
-            box-shadow: 0 14px 30px rgba(0, 20, 45, 0.25);
-            overflow: hidden;
-        }
-        .sql-terminal__bar {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: #111827;
-            border-bottom: 1px solid #26324d;
-            color: #cbd5e1;
-            font-family: Consolas, "Courier New", monospace;
-            font-size: 13px;
-            padding: 10px 14px;
-        }
-        .sql-terminal__title {
-            flex: 1;
-        }
-        .sql-terminal__dot {
-            width: 11px;
-            height: 11px;
-            border-radius: 50%;
-            background: #ef4444;
-        }
-        .sql-terminal__dot:nth-child(2) {
-            background: #f59e0b;
-        }
-        .sql-terminal__dot:nth-child(3) {
-            background: #22c55e;
-            margin-right: 8px;
-        }
-        .sql-terminal pre {
-            margin: 0;
-            padding: 20px;
-            background: #050b16;
-            color: #d1fae5;
-            font-family: Consolas, "Courier New", monospace;
-            font-size: 14px;
-            line-height: 1.55;
-            overflow-x: auto;
-            white-space: pre;
-        }
-        .sql-terminal code {
-            color: inherit;
-        }
-        .copy-sql {
-            border: 1px solid #334155;
-            background: #0f172a;
-            color: #dbeafe;
-            border-radius: 6px;
-            cursor: pointer;
-            font-family: Consolas, "Courier New", monospace;
-            font-size: 12px;
-            font-weight: bold;
-            line-height: 1;
-            margin-left: auto;
-            padding: 7px 10px;
-        }
-        .copy-sql:hover {
-            background: #1e293b;
-            border-color: #60a5fa;
-        }
-        .copy-sql.is-copied {
-            background: #064e3b;
-            border-color: #10b981;
-            color: #d1fae5;
-        }
-    </style>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
@@ -166,7 +22,6 @@
         <li><a href="#problemas-tipicos">Problemas Típicos</a></li>
         <li><a href="#queries-sql-diagnostico">Queries SQL de Diagnóstico SIATEP</a></li>
         <li><a href="#flujo-debugging">Flujo de Debugging SIATEP</a></li>
-        <li><a href="#tip-real">Tip real</a></li>
     </ul>
 </div>
 
@@ -370,9 +225,11 @@
         <span class="sql-terminal__dot"></span>
         <span class="sql-terminal__title">2. Validar estado de envío</span>
     </div>
-    <pre><code>SQL&gt; SELECT CUN, TIPO_RECA, IND_ENVIO_SUSESO
-  2  FROM MED_SIATEP_RECA
-  3  WHERE CUN = :CUN;</code></pre>
+    <pre><code>SQL&gt; SELECT
+  2    CUN,
+  3    IND_ENVIO_SUSESO
+  4  FROM MED_SIATEP_RECA
+  5  WHERE CUN = :CUN;</code></pre>
 </div>
 
 <div class="sql-terminal">
@@ -408,9 +265,9 @@
     </div>
     <pre><code>SQL&gt; SELECT
   2      R.CUN,
-  3      R.TIPO_RECA,
+  3      R.H_TIPO_ACC_ENF AS TIPO_RECA,
   4      R.IND_ENVIO_SUSESO,
-  5      R.RUT_MEDICO,
+  5      R.H_RUT_CALIFICADOR AS RUT_MEDICO,
   6      M.RUT_MEDICO AS MEDICO_VALIDO,
   7      CASE
   8          WHEN M.RUT_MEDICO IS NULL THEN 'MEDICO NO VALIDO'
@@ -420,206 +277,82 @@
  12      END AS DIAGNOSTICO
  13  FROM MED_SIATEP_RECA R
  14  LEFT JOIN ADH_MEDICOS M
- 15      ON R.RUT_MEDICO = M.RUT_MEDICO
+ 15      ON R.H_RUT_CALIFICADOR = M.RUT_MEDICO
  16  WHERE R.CUN = :CUN;</code></pre>
-</div>
-
-<div class="sql-terminal">
-    <div class="sql-terminal__bar">
-        <span class="sql-terminal__dot"></span>
-        <span class="sql-terminal__dot"></span>
-        <span class="sql-terminal__dot"></span>
-        <span class="sql-terminal__title">sqlplus / diagnostico_siatep.sql</span>
-    </div>
-    <pre><code>SQL&gt; -- ============================================
-SQL&gt; -- DIAGNOSTICO AUTOMATICO SIATEP
-SQL&gt; -- ============================================
-SQL&gt;
-SQL&gt; -- PARAMETRO
-SQL&gt; -- Reemplazar por CUN real
-SQL&gt; DEFINE CUN = 8983649;
-SQL&gt;
-SQL&gt; -- ============================================
-SQL&gt; -- 1. RECA
-SQL&gt; -- ============================================
-SQL&gt; PROMPT ===== RECA =====
-SQL&gt;
-SQL&gt; SELECT
-  2      CUN,
-  3      TIPO_RECA,
-  4      IND_ENVIO_SUSESO,
-  5      RUT_MEDICO,
-  6      FECHA_CREACION
-  7  FROM MED_SIATEP_RECA
-  8  WHERE CUN = &amp;CUN;
-SQL&gt;
-SQL&gt; -- ============================================
-SQL&gt; -- 2. RELA
-SQL&gt; -- ============================================
-SQL&gt; PROMPT ===== RELA =====
-SQL&gt;
-SQL&gt; SELECT
-  2      CUN,
-  3      NUM_SEQ,
-  4      IND_ENVIO_SUSESO,
-  5      FEC_EMISION,
-  6      ESTADO_REG
-  7  FROM MED_SIATEP_RELA
-  8  WHERE CUN = &amp;CUN;
-SQL&gt;
-SQL&gt; -- ============================================
-SQL&gt; -- 3. VALIDACION MEDICO
-SQL&gt; -- ============================================
-SQL&gt; PROMPT ===== VALIDACION MEDICO =====
-SQL&gt;
-SQL&gt; SELECT
-  2      R.CUN,
-  3      R.RUT_MEDICO,
-  4      M.RUT_MEDICO AS MEDICO_VALIDO
-  5  FROM MED_SIATEP_RECA R
-  6  LEFT JOIN ADH_MEDICOS M
-  7      ON R.RUT_MEDICO = M.RUT_MEDICO
-  8  WHERE R.CUN = &amp;CUN;
-SQL&gt;
-SQL&gt; -- ============================================
-SQL&gt; -- 4. DIAGNOSTICO FINAL
-SQL&gt; -- ============================================
-SQL&gt; PROMPT ===== DIAGNOSTICO FINAL =====
-SQL&gt;
-SQL&gt; SELECT
-  2      R.CUN,
-  3      R.TIPO_RECA,
-  4      R.IND_ENVIO_SUSESO,
-  5      CASE
-  6          WHEN M.RUT_MEDICO IS NULL THEN 'ERROR: MEDICO NO VALIDO'
-  7          WHEN R.IND_ENVIO_SUSESO = 'N' THEN 'ERROR: NO TRANSMITIDO'
-  8          WHEN R.IND_ENVIO_SUSESO = 'S' THEN 'OK'
-  9          ELSE 'REVISAR'
- 10      END AS RESULTADO
- 11  FROM MED_SIATEP_RECA R
- 12  LEFT JOIN ADH_MEDICOS M
- 13      ON R.RUT_MEDICO = M.RUT_MEDICO
- 14  WHERE R.CUN = &amp;CUN;</code></pre>
 </div>
 
 <h2 id="flujo-debugging">🔍 Flujo de Debugging SIATEP</h2>
 
-<div class="card">
-<pre>
-        ┌─────────────────────┐
-        │   RECA GENERADA     │
-        └─────────┬───────────┘
-                  │
-                  ▼
-        ┌─────────────────────┐
-        │ ¿Existe en BD?      │
-        │ MED_SIATEP_RECA     │
-        └─────────┬───────────┘
-                  │
-          NO ❌ ───┘──► ERROR GENERACIÓN
-                  │
-                  ▼
-        ┌─────────────────────┐
-        │ ¿IND_ENVIO = 'S'?   │
-        └─────────┬───────────┘
-                  │
-          SI ✅ ───┘──► OK
-                  │
-                  ▼
-        ┌─────────────────────┐
-        │ Validar Médico      │
-        │ ADH_MEDICOS         │
-        └─────────┬───────────┘
-                  │
-          NO ❌ ───┘──► ERROR DATOS
-                  │
-                  ▼
-        ┌─────────────────────┐
-        │ Revisar RELA        │
-        │ MED_SIATEP_RELA     │
-        └─────────┬───────────┘
-                  │
-                  ▼
-        ┌─────────────────────┐
-        │ ¿Proceso batch OK?  │
-        └─────────┬───────────┘
-                  │
-          NO ❌ ───┘──► ERROR PROCESO
-                  │
-                  ▼
-        ┌─────────────────────┐
-        │ REVISAR LOGS        │
-        └─────────────────────┘
-</pre>
-</div>
+<div class="process-flow">
+    <div class="flow-step flow-start">RECA generada</div>
+    <div class="flow-arrow"></div>
 
-<h2 id="tip-real">💡 Tip real</h2>
-
-<div class="card">
-    <div class="term">Esto es oro</div>
-    <p>El 80% de los problemas SIATEP van a caer en:</p>
-    <ul>
-        <li>❌ Médico no válido</li>
-        <li>❌ No pasó por proceso batch</li>
-        <li>❌ Quedó en BD pero no transmitido</li>
-    </ul>
-    <p>👉 Si ejecutas SOLO esto ya detectas casi todo:</p>
-</div>
-
-<div class="sql-terminal">
-    <div class="sql-terminal__bar">
-        <span class="sql-terminal__dot"></span>
-        <span class="sql-terminal__dot"></span>
-        <span class="sql-terminal__dot"></span>
-        <span class="sql-terminal__title">diagnostico_rapido_siatep.sql</span>
+    <div class="flow-row">
+        <div class="flow-node flow-decision">
+            <div class="flow-decision__content">¿Existe CUN en MED_SIATEP_RECA?</div>
+        </div>
+        <div class="flow-branch">
+            <span class="flow-label">NO</span>
+            <div class="flow-result flow-error">Error generación</div>
+        </div>
     </div>
-    <pre><code>SQL&gt; SELECT *
-  2  FROM MED_SIATEP_RECA
-  3  WHERE CUN = :CUN;
+    <div class="flow-arrow"><span>SI</span></div>
 
-SQL&gt; SELECT *
-  2  FROM ADH_MEDICOS
-  3  WHERE RUT_MEDICO = :RUT;</code></pre>
+    <div class="flow-row">
+        <div class="flow-node flow-decision">
+            <div class="flow-decision__content">¿IND_ENVIO_SUSESO = 'S'?</div>
+        </div>
+        <div class="flow-branch">
+            <span class="flow-label">SI</span>
+            <div class="flow-result flow-ok">OK / transmitido</div>
+        </div>
+    </div>
+    <div class="flow-arrow"><span>NO</span></div>
+
+    <div class="flow-row">
+        <div class="flow-node flow-task">
+            <strong>Validar médico</strong>
+            <span>MED_SIATEP_RECA.H_RUT_CALIFICADOR</span>
+            <span>contra ADH_MEDICOS.RUT_MEDICO</span>
+        </div>
+        <div class="flow-branch">
+            <span class="flow-label">NO</span>
+            <div class="flow-result flow-error">Error datos</div>
+        </div>
+    </div>
+    <div class="flow-arrow"><span>SI</span></div>
+
+    <div class="flow-row">
+        <div class="flow-node flow-decision">
+            <div class="flow-decision__content">
+                <strong>Revisar RELA</strong>
+                <span>¿Existe CUN en MED_SIATEP_RELA?</span>
+                <span>¿IND_ENVIO_SUSESO = 'S'?</span>
+            </div>
+        </div>
+        <div class="flow-branch">
+            <span class="flow-label">NO</span>
+            <div class="flow-result flow-warning">Error RELA / pendiente envío</div>
+        </div>
+    </div>
+    <div class="flow-arrow"><span>SI</span></div>
+
+    <div class="flow-row">
+        <div class="flow-node flow-decision">
+            <div class="flow-decision__content">¿Proceso batch OK?</div>
+        </div>
+        <div class="flow-branch">
+            <span class="flow-label">NO</span>
+            <div class="flow-result flow-error">Error proceso</div>
+        </div>
+    </div>
+    <div class="flow-arrow"><span>SI</span></div>
+
+    <div class="flow-step flow-end">Revisar logs / caso específico</div>
 </div>
 
-<script>
-    document.querySelectorAll(".sql-terminal").forEach((terminal) => {
-        const bar = terminal.querySelector(".sql-terminal__bar");
-        const code = terminal.querySelector("pre code");
+<button class="back-to-top" type="button" aria-label="Volver al inicio">↑</button>
 
-        if (!bar || !code) {
-            return;
-        }
-
-        const copyButton = document.createElement("button");
-        copyButton.type = "button";
-        copyButton.className = "copy-sql";
-        copyButton.textContent = "Copiar";
-        copyButton.setAttribute("aria-label", "Copiar query SQL");
-
-        copyButton.addEventListener("click", async () => {
-            const originalText = copyButton.textContent;
-            const query = code.innerText.replace(/^SQL>\s?/gm, "").replace(/^\s*\d+\s+/gm, "");
-
-            try {
-                await navigator.clipboard.writeText(query.trim());
-                copyButton.textContent = "Copiado";
-                copyButton.classList.add("is-copied");
-
-                window.setTimeout(() => {
-                    copyButton.textContent = originalText;
-                    copyButton.classList.remove("is-copied");
-                }, 1600);
-            } catch (error) {
-                copyButton.textContent = "Error";
-                window.setTimeout(() => {
-                    copyButton.textContent = originalText;
-                }, 1600);
-            }
-        });
-
-        bar.appendChild(copyButton);
-    });
-</script>
+<script src="main.js"></script>
 </body>
 </html>
