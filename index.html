@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Glosario Completo SIATEP / SISESAT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        h1 {
+            color: #003366;
+            border-bottom: 3px solid #003366;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #005599;
+            margin-top: 30px;
+        }
+        .indice {
+            background: #ffffff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .indice h2 {
+            margin-top: 0;
+        }
+        .indice ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .indice li {
+            margin: 8px 0;
+        }
+        .indice a {
+            color: #005599;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .indice a:hover {
+            text-decoration: underline;
+        }
+        .card {
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .term {
+            font-weight: bold;
+            font-size: 16px;
+            color: #002244;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #ffffff;
+            margin-top: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        th {
+            background-color: #003366;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .sql-terminal {
+            background: #0b1220;
+            border: 1px solid #1f2a44;
+            border-radius: 8px;
+            margin: 24px 0 10px;
+            box-shadow: 0 14px 30px rgba(0, 20, 45, 0.25);
+            overflow: hidden;
+        }
+        .sql-terminal__bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #111827;
+            border-bottom: 1px solid #26324d;
+            color: #cbd5e1;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 13px;
+            padding: 10px 14px;
+        }
+        .sql-terminal__title {
+            flex: 1;
+        }
+        .sql-terminal__dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: #ef4444;
+        }
+        .sql-terminal__dot:nth-child(2) {
+            background: #f59e0b;
+        }
+        .sql-terminal__dot:nth-child(3) {
+            background: #22c55e;
+            margin-right: 8px;
+        }
+        .sql-terminal pre {
+            margin: 0;
+            padding: 20px;
+            background: #050b16;
+            color: #d1fae5;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 14px;
+            line-height: 1.55;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        .sql-terminal code {
+            color: inherit;
+        }
+        .copy-sql {
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: #dbeafe;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 1;
+            margin-left: auto;
+            padding: 7px 10px;
+        }
+        .copy-sql:hover {
+            background: #1e293b;
+            border-color: #60a5fa;
+        }
+        .copy-sql.is-copied {
+            background: #064e3b;
+            border-color: #10b981;
+            color: #d1fae5;
+        }
+    </style>
+</head>
+<body>
+
+<h1>📘 Glosario Completo SIATEP / SISESAT</h1>
+
+<div class="indice">
+    <h2>Índice</h2>
+    <ul>
+        <li><a href="#sistemas-y-plataformas">Sistemas y Plataformas</a></li>
+        <li><a href="#documentos-sisesat">Documentos SISESAT - Ley 16.744</a></li>
+        <li><a href="#documentos-mas-utilizados">Documentos más utilizados en SIATEP</a></li>
+        <li><a href="#conceptos-de-negocio">Conceptos de Negocio</a></li>
+        <li><a href="#base-de-datos">Base de Datos</a></li>
+        <li><a href="#procesos-clave">Procesos Clave</a></li>
+        <li><a href="#gestion-de-tickets">Gestión de Tickets</a></li>
+        <li><a href="#problemas-tipicos">Problemas Típicos</a></li>
+        <li><a href="#queries-sql-diagnostico">Queries SQL de Diagnóstico SIATEP</a></li>
+        <li><a href="#flujo-debugging">Flujo de Debugging SIATEP</a></li>
+        <li><a href="#tip-real">Tip real</a></li>
+    </ul>
+</div>
+
+<h2 id="sistemas-y-plataformas">🧩 Sistemas y Plataformas</h2>
+
+<div class="card">
+    <div class="term">SIATEP</div>
+    Sistema encargado de gestionar expedientes (CUN), generar documentos (RECA, RELA) 
+    y ejecutar procesos de transmisión hacia la SUSESO mediante SISESAT.
+</div>
+
+<div class="card">
+    <div class="term">SISESAT</div>
+    Sistema Nacional de Información de Seguridad y Salud en el Trabajo. 
+    Plataforma administrada por la SUSESO que centraliza la información relacionada con la Ley 16.744.
+</div>
+
+<div class="card">
+    <div class="term">SUSESO</div>
+    Superintendencia de Seguridad Social, organismo regulador que recibe y valida la información.
+</div>
+
+<div class="card">
+    <div class="term">IST</div>
+    Instituto de Seguridad del Trabajo. Cliente que genera información de accidentes.
+</div>
+
+<h2 id="documentos-sisesat">📄 Documentos SISESAT – Ley 16.744</h2>
+
+<table>
+    <tr>
+        <th>Sigla</th>
+        <th>Nombre del Documento</th>
+        <th>Descripción</th>
+    </tr>
+    <tr><td>DIAT</td><td>Denuncia Individual de Accidente del Trabajo</td><td>Registra accidentes laborales o de trayecto.</td></tr>
+    <tr><td>DIEP</td><td>Denuncia Individual de Enfermedad Profesional</td><td>Registra enfermedades de origen laboral.</td></tr>
+    <tr><td>RECA</td><td>Resolución de Calificación</td><td>Determina si el siniestro es laboral o común.</td></tr>
+    <tr><td>RELA</td><td>Reposo Laboral</td><td>Informa reposos o licencias médicas.</td></tr>
+    <tr><td>ALLA</td><td>Alta Laboral</td><td>Certifica reincorporación al trabajo.</td></tr>
+    <tr><td>ALME</td><td>Alta Médica</td><td>Certifica término del tratamiento.</td></tr>
+    <tr><td>REIP</td><td>Resolución de Incapacidad Permanente</td><td>Evalúa secuelas permanentes.</td></tr>
+    <tr><td>RING</td><td>Documento de Reingreso</td><td>Registra retorno a tratamiento.</td></tr>
+    <tr><td>EMEI</td><td>Evaluación Médica Inicial</td><td>Primera evaluación clínica.</td></tr>
+    <tr><td>PRES</td><td>Prescripción de Medidas</td><td>Define medidas preventivas.</td></tr>
+    <tr><td>VERI</td><td>Verificación de Medidas</td><td>Seguimiento de cumplimiento.</td></tr>
+    <tr><td>NOTA</td><td>Notificación a la Autoridad</td><td>Comunicación de accidentes graves.</td></tr>
+</table>
+
+<h2 id="documentos-mas-utilizados">📌 Documentos más utilizados en SIATEP</h2>
+
+<div class="card">
+    <ol>
+        <li>DIAT</li>
+        <li>DIEP</li>
+        <li>RECA</li>
+        <li>RELA</li>
+        <li>ALLA</li>
+        <li>ALME</li>
+        <li>REIP</li>
+    </ol>
+</div>
+
+<h2 id="conceptos-de-negocio">📄 Conceptos de Negocio</h2>
+
+<div class="card">
+    <div class="term">RECA (Resolución de Calificación)</div>
+    Clasifica el accidente:
+    <ul>
+        <li>RECA 2 → Accidente de trayecto</li>
+        <li>RECA 4 → Accidente del trabajo</li>
+        <li>RECA 10 → Dirigente sindical</li>
+    </ul>
+</div>
+
+<div class="card">
+    <div class="term">RELA</div>
+    Documento que informa reposos laborales y se transmite a SUSESO.
+</div>
+
+<div class="card">
+    <div class="term">CUN</div>
+    Código Único Nacional que identifica el expediente.
+</div>
+
+<div class="card">
+    <div class="term">Atención</div>
+    Identificador del evento médico asociado al paciente.
+</div>
+
+<h2 id="base-de-datos">🗄️ Base de Datos</h2>
+
+<div class="card">
+    <div class="term">MED_SIATEP_RECA</div>
+    Tabla donde se registran las RECA.
+</div>
+
+<div class="card">
+    <div class="term">MED_SIATEP_RELA</div>
+    Tabla donde se registran los RELA y su estado de transmisión.
+</div>
+
+<div class="card">
+    <div class="term">ADH_MEDICOS</div>
+    Tabla que valida médicos permitidos para transmisión.
+</div>
+
+<div class="card">
+    <div class="term">Logs de envío</div>
+    Registros que confirman si un documento fue transmitido.
+</div>
+
+<h2 id="procesos-clave">🔄 Procesos Clave</h2>
+
+<div class="card">
+    <div class="term">Flujo de Transmisión</div>
+    <ol>
+        <li>Generación de documento (RECA / RELA)</li>
+        <li>Registro en tablas SIATEP</li>
+        <li>Proceso batch interno</li>
+        <li>Envío a SISESAT</li>
+        <li>Confirmación en logs</li>
+    </ol>
+</div>
+
+<div class="card">
+    <div class="term">Regularizar Documentos</div>
+    Permite reprocesar documentos desde la interfaz SIATEP:
+    <br>
+    SIATEP → Resumen Envío SUSESO → Regularizar Documentos
+</div>
+
+<div class="card">
+    <div class="term">Detalle Envío SUSESO</div>
+    Vista que muestra el estado de los envíos realizados.
+</div>
+
+<h2 id="gestion-de-tickets">🧑‍💻 Gestión de Tickets</h2>
+
+<div class="card">
+    <div class="term">RF</div>
+    Ticket de requerimiento (ej: RF-6130897).
+</div>
+
+<div class="card">
+    <div class="term">REQ</div>
+    Identificador interno del requerimiento.
+</div>
+
+<div class="card">
+    <div class="term">Pendiente Cliente</div>
+    Estado que indica espera de validación del cliente.
+</div>
+
+<div class="card">
+    <div class="term">Evidencia</div>
+    Pruebas de ejecución o corrección.
+</div>
+
+<h2 id="problemas-tipicos">⚠️ Problemas Típicos</h2>
+
+<div class="card">
+    Caso frecuente:
+    <ul>
+        <li>Documento generado ✅</li>
+        <li>Registrado en base de datos ✅</li>
+        <li>No aparece en logs ❌</li>
+        <li>No se transmite ❌</li>
+    </ul>
+</div>
+
+<div class="card">
+    Posibles causas:
+    <ul>
+        <li>Filtros en procesos (ej: NOT IN / condiciones)</li>
+        <li>Datos inválidos (ej: médico no permitido)</li>
+        <li>Errores en procesos batch</li>
+        <li>Problemas en UI</li>
+        <li>Datos incompletos</li>
+    </ul>
+</div>
+
+<h2 id="queries-sql-diagnostico">🧪 Queries SQL de Diagnóstico SIATEP</h2>
+
+<div class="sql-terminal">
+    <div class="sql-terminal__bar">
+        <span class="sql-terminal__dot"></span>
+        <span class="sql-terminal__dot"></span>
+        <span class="sql-terminal__dot"></span>
+        <span class="sql-terminal__title">1. Buscar RECA por CUN</span>
+    </div>
+    <pre><code>SQL&gt; SELECT *
+  2  FROM MED_SIATEP_RECA
+  3  WHERE CUN = :CUN;</code></pre>
+</div>
+
+<div class="sql-terminal">
+    <div class="sql-terminal__bar">
+        <span class="sql-terminal__dot"></span>
+        <span class="sql-terminal__dot"></span>
+        <span class="sql-terminal__dot"></span>
+        <span class="sql-terminal__title">2. Validar estado de envío</span>
+    </div>
+    <pre><code>SQL&gt; SELECT CUN, TIPO_RECA, IND_ENVIO_SUSESO
+  2  FROM MED_SIATEP_RECA
+  3  WHERE CUN = :CUN;</code></pre>
+</div>
+
+<div class="sql-terminal">
+    <div class="sql-terminal__bar">
+        <span class="sql-terminal__dot"></span>
+        <span class="sql-terminal__dot"></span>
+        <span class="sql-terminal__dot"></span>
+        <span class="sql-terminal__title">3. Revisar RELA asociados</span>
+    </div>
+    <pre><code>SQL&gt; SELECT *
+  2  FROM MED_SIATEP_RELA
+  3  WHERE CUN = :CUN;</code></pre>
+</div>
+
+<div class="sql-terminal">
+    <div class="sql-terminal__bar">
+        <span class="sql-terminal__dot"></span>
+        <span class="sql-terminal__dot"></span>
+        <span class="sql-terminal__dot"></span>
+        <span class="sql-terminal__title">4. Validar médico</span>
+    </div>
+    <pre><code>SQL&gt; SELECT *
+  2  FROM ADH_MEDICOS
+  3  WHERE RUT_MEDICO = :RUT;</code></pre>
+</div>
+
+<div class="sql-terminal">
+    <div class="sql-terminal__bar">
+        <span class="sql-terminal__dot"></span>
+        <span class="sql-terminal__dot"></span>
+        <span class="sql-terminal__dot"></span>
+        <span class="sql-terminal__title">5. Diagnóstico completo</span>
+    </div>
+    <pre><code>SQL&gt; SELECT
+  2      R.CUN,
+  3      R.TIPO_RECA,
+  4      R.IND_ENVIO_SUSESO,
+  5      R.RUT_MEDICO,
+  6      M.RUT_MEDICO AS MEDICO_VALIDO,
+  7      CASE
+  8          WHEN M.RUT_MEDICO IS NULL THEN 'MEDICO NO VALIDO'
+  9          WHEN R.IND_ENVIO_SUSESO = 'N' THEN 'NO TRANSMITIDO'
+ 10          WHEN R.IND_ENVIO_SUSESO = 'S' THEN 'OK'
+ 11          ELSE 'REVISAR'
+ 12      END AS DIAGNOSTICO
+ 13  FROM MED_SIATEP_RECA R
+ 14  LEFT JOIN ADH_MEDICOS M
+ 15      ON R.RUT_MEDICO = M.RUT_MEDICO
+ 16  WHERE R.CUN = :CUN;</code></pre>
+</div>
+
+<div class="sql-terminal">
+    <div class="sql-terminal__bar">
+        <span class="sql-terminal__dot"></span>
+        <span class="sql-terminal__dot"></span>
+        <span class="sql-terminal__dot"></span>
+        <span class="sql-terminal__title">sqlplus / diagnostico_siatep.sql</span>
+    </div>
+    <pre><code>SQL&gt; -- ============================================
+SQL&gt; -- DIAGNOSTICO AUTOMATICO SIATEP
+SQL&gt; -- ============================================
+SQL&gt;
+SQL&gt; -- PARAMETRO
+SQL&gt; -- Reemplazar por CUN real
+SQL&gt; DEFINE CUN = 8983649;
+SQL&gt;
+SQL&gt; -- ============================================
+SQL&gt; -- 1. RECA
+SQL&gt; -- ============================================
+SQL&gt; PROMPT ===== RECA =====
+SQL&gt;
+SQL&gt; SELECT
+  2      CUN,
+  3      TIPO_RECA,
+  4      IND_ENVIO_SUSESO,
+  5      RUT_MEDICO,
+  6      FECHA_CREACION
+  7  FROM MED_SIATEP_RECA
+  8  WHERE CUN = &amp;CUN;
+SQL&gt;
+SQL&gt; -- ============================================
+SQL&gt; -- 2. RELA
+SQL&gt; -- ============================================
+SQL&gt; PROMPT ===== RELA =====
+SQL&gt;
+SQL&gt; SELECT
+  2      CUN,
+  3      NUM_SEQ,
+  4      IND_ENVIO_SUSESO,
+  5      FEC_EMISION,
+  6      ESTADO_REG
+  7  FROM MED_SIATEP_RELA
+  8  WHERE CUN = &amp;CUN;
+SQL&gt;
+SQL&gt; -- ============================================
+SQL&gt; -- 3. VALIDACION MEDICO
+SQL&gt; -- ============================================
+SQL&gt; PROMPT ===== VALIDACION MEDICO =====
+SQL&gt;
+SQL&gt; SELECT
+  2      R.CUN,
+  3      R.RUT_MEDICO,
+  4      M.RUT_MEDICO AS MEDICO_VALIDO
+  5  FROM MED_SIATEP_RECA R
+  6  LEFT JOIN ADH_MEDICOS M
+  7      ON R.RUT_MEDICO = M.RUT_MEDICO
+  8  WHERE R.CUN = &amp;CUN;
+SQL&gt;
+SQL&gt; -- ============================================
+SQL&gt; -- 4. DIAGNOSTICO FINAL
+SQL&gt; -- ============================================
+SQL&gt; PROMPT ===== DIAGNOSTICO FINAL =====
+SQL&gt;
+SQL&gt; SELECT
+  2      R.CUN,
+  3      R.TIPO_RECA,
+  4      R.IND_ENVIO_SUSESO,
+  5      CASE
+  6          WHEN M.RUT_MEDICO IS NULL THEN 'ERROR: MEDICO NO VALIDO'
+  7          WHEN R.IND_ENVIO_SUSESO = 'N' THEN 'ERROR: NO TRANSMITIDO'
+  8          WHEN R.IND_ENVIO_SUSESO = 'S' THEN 'OK'
+  9          ELSE 'REVISAR'
+ 10      END AS RESULTADO
+ 11  FROM MED_SIATEP_RECA R
+ 12  LEFT JOIN ADH_MEDICOS M
+ 13      ON R.RUT_MEDICO = M.RUT_MEDICO
+ 14  WHERE R.CUN = &amp;CUN;</code></pre>
+</div>
+
+<h2 id="flujo-debugging">🔍 Flujo de Debugging SIATEP</h2>
+
+<div class="card">
+<pre>
+        ┌─────────────────────┐
+        │   RECA GENERADA     │
+        └─────────┬───────────┘
+                  │
+                  ▼
+        ┌─────────────────────┐
+        │ ¿Existe en BD?      │
+        │ MED_SIATEP_RECA     │
+        └─────────┬───────────┘
+                  │
+          NO ❌ ───┘──► ERROR GENERACIÓN
+                  │
+                  ▼
+        ┌─────────────────────┐
+        │ ¿IND_ENVIO = 'S'?   │
+        └─────────┬───────────┘
+                  │
+          SI ✅ ───┘──► OK
+                  │
+                  ▼
+        ┌─────────────────────┐
+        │ Validar Médico      │
+        │ ADH_MEDICOS         │
+        └─────────┬───────────┘
+                  │
+          NO ❌ ───┘──► ERROR DATOS
+                  │
+                  ▼
+        ┌─────────────────────┐
+        │ Revisar RELA        │
+        │ MED_SIATEP_RELA     │
+        └─────────┬───────────┘
+                  │
+                  ▼
+        ┌─────────────────────┐
+        │ ¿Proceso batch OK?  │
+        └─────────┬───────────┘
+                  │
+          NO ❌ ───┘──► ERROR PROCESO
+                  │
+                  ▼
+        ┌─────────────────────┐
+        │ REVISAR LOGS        │
+        └─────────────────────┘
+</pre>
+</div>
+
+<h2 id="tip-real">💡 Tip real</h2>
+
+<div class="card">
+    <div class="term">Esto es oro</div>
+    <p>El 80% de los problemas SIATEP van a caer en:</p>
+    <ul>
+        <li>❌ Médico no válido</li>
+        <li>❌ No pasó por proceso batch</li>
+        <li>❌ Quedó en BD pero no transmitido</li>
+    </ul>
+    <p>👉 Si ejecutas SOLO esto ya detectas casi todo:</p>
+</div>
+
+<div class="sql-terminal">
+    <div class="sql-terminal__bar">
+        <span class="sql-terminal__dot"></span>
+        <span class="sql-terminal__dot"></span>
+        <span class="sql-terminal__dot"></span>
+        <span class="sql-terminal__title">diagnostico_rapido_siatep.sql</span>
+    </div>
+    <pre><code>SQL&gt; SELECT *
+  2  FROM MED_SIATEP_RECA
+  3  WHERE CUN = :CUN;
+
+SQL&gt; SELECT *
+  2  FROM ADH_MEDICOS
+  3  WHERE RUT_MEDICO = :RUT;</code></pre>
+</div>
+
+<script>
+    document.querySelectorAll(".sql-terminal").forEach((terminal) => {
+        const bar = terminal.querySelector(".sql-terminal__bar");
+        const code = terminal.querySelector("pre code");
+
+        if (!bar || !code) {
+            return;
+        }
+
+        const copyButton = document.createElement("button");
+        copyButton.type = "button";
+        copyButton.className = "copy-sql";
+        copyButton.textContent = "Copiar";
+        copyButton.setAttribute("aria-label", "Copiar query SQL");
+
+        copyButton.addEventListener("click", async () => {
+            const originalText = copyButton.textContent;
+            const query = code.innerText.replace(/^SQL>\s?/gm, "").replace(/^\s*\d+\s+/gm, "");
+
+            try {
+                await navigator.clipboard.writeText(query.trim());
+                copyButton.textContent = "Copiado";
+                copyButton.classList.add("is-copied");
+
+                window.setTimeout(() => {
+                    copyButton.textContent = originalText;
+                    copyButton.classList.remove("is-copied");
+                }, 1600);
+            } catch (error) {
+                copyButton.textContent = "Error";
+                window.setTimeout(() => {
+                    copyButton.textContent = originalText;
+                }, 1600);
+            }
+        });
+
+        bar.appendChild(copyButton);
+    });
+</script>
+</body>
+</html>
